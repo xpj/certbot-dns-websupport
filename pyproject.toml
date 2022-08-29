@@ -1,0 +1,55 @@
+[tool.black]
+line-length = 120
+
+[tool.isort]
+line_length = 120
+profile = "black"
+
+[tool.poetry]
+name = "certbot-dns-websupport"
+version = "1.0.0"
+description = "This is a plugin for Certbot that uses the Websupport REST API to allow Websupport customers to prove control of a domain name."
+authors = ["johnybx"]
+license = "Apache License 2.0"
+repository = "https://github.com/johnybx/certbot-dns-websupport"
+readme = "README.md"
+classifiers=[
+    'Development Status :: 5 - Production/Stable',
+    'Environment :: Plugins',
+    'Intended Audience :: System Administrators',
+    'License :: OSI Approved :: Apache Software License',
+    'Operating System :: POSIX :: Linux',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Topic :: Internet :: WWW/HTTP',
+    'Topic :: Security',
+    'Topic :: System :: Installation/Setup',
+    'Topic :: System :: Networking',
+    'Topic :: System :: Systems Administration',
+    'Topic :: Utilities',
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+certbot = "^1.29.0"
+requests = "^2.28.1"
+
+[tool.poetry.dev-dependencies]
+tox = "^3.25.1"
+flake8 = "^5.0.4"
+pytype = {version = "^2022.8.23", python = ">=3.8,<3.11"}
+coverage = "^6.4.4"
+pytest = "^7.1.2"
+requests-mock = "^1.9.3"
+
+[tool.poetry.plugins."certbot.plugins"]
+dns-websupport = 'certbot_dns_websupport._internal.dns_websupport:Authenticator'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+

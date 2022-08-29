@@ -1,0 +1,6 @@
+*.egg-ingo
+env
+venv
+*.pyc
+.coverage
+dist
